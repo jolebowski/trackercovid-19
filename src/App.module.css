@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pageWhole {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  padding: 12px 24px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.titleHeader {
+  min-width: 218px;
+}
+.titleHeader:visited {
+  color: #222;
+}
+.titleHeader {
+  text-decoration: none;
+}
+.namePage {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  line-height: 24px;
+}
+.content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.listCountry {
+  transition: width cubic-bezier(0.3, 0.55, 0.1, 1) 0.4s;
+  width: 320px;
+}
+
+.vertical {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: auto;
+}
