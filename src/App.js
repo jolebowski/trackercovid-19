@@ -29,10 +29,23 @@ class App extends Component {
             <CountryPicker />
           </div>
           <div className={styles.vertical}>
-            <Cards data={data} />
+            <div className={styles.verticalHeader}>
+              <div className={styles.location}>
+                <h2 className={styles.locationTitle}>France</h2>
+              </div>
+            </div>
+            <div className={styles.verticalContent}>
+              <div className={styles.graph}>
+                <div className={styles.row}>
+                  <Cards data={data} />
+                </div>
+                <div className={styles.row}>
+                  <Chart />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <Chart />
       </div>
     );
   }
