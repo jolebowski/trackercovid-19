@@ -10,11 +10,12 @@ const Chart = () => {
       setDailyData(await fetchDailyData());
     };
     fetchAPi();
-  });
+  }, [setDailyData]);
 
   const LineChart =
-    dailyData.length !== 0 ? (
+    dailyData.length !== undefined ? (
       <Line
+      height={254}
         data={{
           labels: dailyData.map(({ date }) => date),
           datasets: [
