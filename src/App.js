@@ -15,11 +15,14 @@ class App extends Component {
   }
 
   handleCountryChange = async (country) => {
-    console.log(country, 'country')
+    const fetchedData = await fetchData(country);
+    this.setState({ data: fetchedData, country: country });
+
+    console.log(fetchedData, 'fetchedData')
   }
 
   render() {
-    const { data } = this.state;
+    const { data, country } = this.state;
     return (
       <div className={styles.pageWhole}>
         <div className={styles.header}>
@@ -31,12 +34,12 @@ class App extends Component {
         </div>
         <div className={styles.content}>
           <div className={styles.listCountry}>
-            <CountryPicker handleCountryChange={this.handleCountryChange} />
+            <CountryPicker data={data} handleCountryChange={this.handleCountryChange} />
           </div>
           <div className={styles.vertical}>
             <div className={styles.verticalHeader}>
               <div className={styles.location}>
-                <h2 className={styles.locationTitle}>France</h2>
+                <h2 className={styles.locationTitle}>{country ? country : "Monde"}</h2>
               </div>
             </div>
             <div className={styles.verticalContent}>
@@ -45,7 +48,7 @@ class App extends Component {
                   <Cards data={data} />
                 </div>
                 <div className={styles.row}>
-                  <Chart />
+                  <Chart data={data} />
                 </div>
               </div>
             </div>

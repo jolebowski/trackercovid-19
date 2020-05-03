@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css";
-const Chart = () => {
+const Chart = ({data : {confirmed, deaths, recovered}}) => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -10,9 +10,9 @@ const Chart = () => {
       setDailyData(await fetchDailyData());
     };
     fetchAPi();
-  }, [setDailyData]);
+  }, []);
 
-  const LineChart =
+  const LineChart = (
     dailyData.length !== undefined ? (
       <Line
       height={254}
@@ -29,16 +29,34 @@ const Chart = () => {
               data: dailyData.map(({ deaths }) => deaths),
               label: "Morts",
               backgroundColor: "#767676",
-              borderColor: "#767676",
+              borderColor: "#767676", 
             },
           ],
         }}
       />
-    ) : null;
+    ) : null
+  )
+    const pieChar = (
+      confirmed ? (
+        <Pie
+          data={{
+            labels: ["Contaminés", "Guéris", "Morts"],
+            datasets: [{
+              data:[confirmed.value, recovered.value, deaths.value],
+              backgroundColor: ["#de3700", "#00aa00", "#767676"]
+            }],
+          }}
+          height= "100%"
+        />
+      ) : null
+    )
   return (
     <div className={styles.row}>
       <div className={styles.col6}>
-        <div className={styles.test}>{LineChart}</div>
+        <div>{pieChar}</div>
+      </div>
+      <div className={styles.col6}>
+        <div>{LineChart}</div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const CountryPicker = ({handleCountryChange}) => {
       {fetchedCountries && fetchedCountries.map((country, i) =>
         <div id={country} className={styles.divArea}>
         <div className={styles.country} key={i} 
-        onClick={e => handleCountryChange(document.getElementById({country}))} >
+        onClick={e => handleCountryChange(e.currentTarget.dataset.country)} data-country={country} >
           {country}
         </div>
         </div>
