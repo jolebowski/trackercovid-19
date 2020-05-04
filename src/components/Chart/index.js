@@ -15,7 +15,9 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
   const LineChart = (
     dailyData.length !== undefined ? (
       <Line
-      height={254}
+      responsive= {true}
+      width= "720px"
+      height="360px"
         data={{
           labels: dailyData.map(({ date }) => date),
           datasets: [
@@ -39,6 +41,7 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
     const pieChar = (
       confirmed ? (
         <Pie
+          responsive= {true}
           data={{
             labels: ["Contaminés", "Guéris", "Morts"],
             datasets: [{
@@ -46,7 +49,8 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
               backgroundColor: ["#de3700", "#00aa00", "#767676"]
             }],
           }}
-          height= "100%"
+          width= "720px"
+          height="360px"
         />
       ) : null
     )
