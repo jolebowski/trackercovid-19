@@ -1,28 +1,27 @@
 import React, { Component } from "react";
-import { Cards, Chart, CountryPicker } from "./components";
+import { Cards, Chart, CountryPicker, Infos } from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
 
 class App extends Component {
   state = {
     data: {},
-    country: ''
+    country: "",
+    statStatic: "",
   };
 
   async componentDidMount() {
     const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
+    this.setState({ data: fetchedData, statStatic: fetchedData });
   }
 
   handleCountryChange = async (country) => {
     const fetchedData = await fetchData(country);
     this.setState({ data: fetchedData, country: country });
-
-    console.log(fetchedData, 'fetchedData')
-  }
+  };
 
   render() {
-    const { data, country } = this.state;
+    const { data, country, statStatic } = this.state;
     return (
       <div className={styles.pageWhole}>
         <div className={styles.header}>
@@ -34,12 +33,18 @@ class App extends Component {
         </div>
         <div className={styles.content}>
           <div className={styles.listCountry}>
-            <CountryPicker data={data} handleCountryChange={this.handleCountryChange} />
+            <Infos data={statStatic} />
+            <CountryPicker
+              data={data}
+              handleCountryChange={this.handleCountryChange}
+            />
           </div>
           <div className={styles.vertical}>
             <div className={styles.verticalHeader}>
               <div className={styles.location}>
-                <h2 className={styles.locationTitle}>{country ? country : "Monde"}</h2>
+                <h2 className={styles.locationTitle}>
+                  {country ? country : "Monde"}
+                </h2>
               </div>
             </div>
             <div className={styles.verticalContent}>

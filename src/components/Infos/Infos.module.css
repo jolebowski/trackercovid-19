@@ -1,0 +1,55 @@
+.info {
+  border-bottom: #ddd 1px solid;
+  color: #333;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.infotitle {
+  margin-bottom: 0px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+  font-weight: 600;
+}
+.lastUpdate {
+  font-size: 13px;
+  color: #767676;
+  line-height: 20px;
+  padding-bottom: 12px;
+}
+.confirmed {
+  font-size: 32px;
+  color: #de3700;
+  font-weight: bold;
+  line-height: 40px;
+}
+.infoData {
+  padding-bottom: 15px;
+}
+.infoLegend {
+  display: grid;
+  grid-template-columns: 8px auto min-content;
+  align-items: center;
+  grid-gap: 16px 8px;
+  font-size: 13px;
+  line-height: 20px;
+  padding-top: 10px;
+}
+.color {
+  width: 8px;
+  height: 8px;
+  background: rgb(96, 187, 105);
+}
+.description {
+  font-weight: 600;
+}
+.total {
+  color: #767676;
+  display: flex;
+  align-items: center;
+}
+.colorDeaths {
+  width: 8px;
+  height: 8px;
+  background: rgb(118, 118, 118);
+}
