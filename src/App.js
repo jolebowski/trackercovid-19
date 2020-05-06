@@ -8,6 +8,7 @@ class App extends Component {
     data: {},
     country: "",
     statStatic: "",
+    addClass: "",
   };
 
   async componentDidMount() {
@@ -15,13 +16,13 @@ class App extends Component {
     this.setState({ data: fetchedData, statStatic: fetchedData });
   }
 
-  handleCountryChange = async (country) => {
+  handleCountryChange = async (country, index) => {
     const fetchedData = await fetchData(country);
-    this.setState({ data: fetchedData, country: country });
+    this.setState({ data: fetchedData, country: country, addClass: index });
   };
 
   render() {
-    const { data, country, statStatic } = this.state;
+    const { data, country, statStatic, addClass } = this.state;
     return (
       <div className={styles.pageWhole}>
         <div className={styles.header}>
@@ -37,6 +38,7 @@ class App extends Component {
             <CountryPicker
               data={data}
               handleCountryChange={this.handleCountryChange}
+              addClass={addClass}
             />
           </div>
           <div className={styles.vertical}>

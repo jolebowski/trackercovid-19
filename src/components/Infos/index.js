@@ -36,7 +36,8 @@ const Infos = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
         </h2>
       </div>
       <div className={styles.lastUpdate}>
-        Dernière mise à jour le :{lastUpdate}
+        Dernière mise à jour le :{" "}
+        {new Date(lastUpdate).toLocaleDateString("fr-FR")}
       </div>
     </div>
   );
