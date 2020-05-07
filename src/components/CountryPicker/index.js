@@ -4,21 +4,36 @@ import { fetchCountries } from "../../api";
 import cx from "classnames";
 
 const CountryPicker = ({ handleCountryChange, addClass }) => {
-  const [fetchedCountries, setFetechedCountries] = useState();
-  const [search, setSearch] = useState();
+  const [fetchedCountries, setFetechedCountries] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
       setFetechedCountries(await fetchCountries());
     };
     fetchApi();
-  }, [setFetechedCountries]);
+  }, []);
+
+  useEffect(() => {
+    setFilteredCountries(
+      fetchedCountries &&
+        Object.values(fetchedCountries).filter((country) => {
+          console.log(
+            fetchedCountries,
+            "setFilteredCountriessetFilteredCountries"
+          );
+          country &&
+            country.toLowerCase().includes(search && search.toLowerCase());
+        })
+    );
+  }, [search, fetchedCountries]);
 
   return (
     <div className={styles.tabCountry}>
       <div className={styles.info}>
         <div className={styles.areas}>
-          {/*<div className={styles.searchCountrie}>
+          <div className={styles.searchCountrie}>
             <input
               type="text"
               placeholder="Entrer le nom du pays"
@@ -26,7 +41,6 @@ const CountryPicker = ({ handleCountryChange, addClass }) => {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-        */}
           {fetchedCountries &&
             fetchedCountries.map((country, index) => (
               <div id={country} className={styles.divArea}>
