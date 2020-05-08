@@ -6,7 +6,7 @@ import cx from "classnames";
 const CountryPicker = ({ handleCountryChange, addClass }) => {
   const [fetchedCountries, setFetechedCountries] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([])
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -18,16 +18,12 @@ const CountryPicker = ({ handleCountryChange, addClass }) => {
   useEffect(() => {
     setFilteredCountries(
       fetchedCountries &&
-        Object.values(fetchedCountries).filter((country) => {
-          console.log(
-            fetchedCountries,
-            "setFilteredCountriessetFilteredCountries"
-          );
-          country &&
-            country.toLowerCase().includes(search && search.toLowerCase());
-        })
-    );
-  }, [search, fetchedCountries]);
+      Object.values(fetchedCountries).filter((country) => {
+      return country &&
+        country.toLowerCase().includes(search && search.toLowerCase());
+    })
+    )
+  }, [search, fetchedCountries])
 
   return (
     <div className={styles.tabCountry}>
@@ -36,18 +32,21 @@ const CountryPicker = ({ handleCountryChange, addClass }) => {
           <div className={styles.searchCountrie}>
             <input
               type="text"
-              placeholder="Entrer le nom du pays"
+              placeholder="Entrez le nom d'un pays"
               autocapitalize="off"
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          {fetchedCountries &&
-            fetchedCountries.map((country, index) => (
+          {filteredCountries &&
+            filteredCountries.map((country, index) => (
               <div id={country} className={styles.divArea}>
+                {console.log(search,'searchsearch')}
+                {console.log(addClass,'addClassaddClass')}
+
                 <div
                   className={cx(
                     styles.country,
-                    addClass === index && styles.active
+                    addClass === index && styles.active,
                   )}
                   key={index}
                   onClick={(e) =>
