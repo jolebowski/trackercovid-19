@@ -41,9 +41,7 @@ export const fetchCountries = async () => {
 
 export const fetchTotal = async () => {
   try {
-    const data = await axios.get(`${URL}/confirmed`);
-    console.log(data, "dataatataa");
-    return data
+    const { data } = await axios.get(`${URL}/confirmed`);
+    return data;
   } catch (error) {}
 };
-

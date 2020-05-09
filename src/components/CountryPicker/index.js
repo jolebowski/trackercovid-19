@@ -3,17 +3,22 @@ import styles from "./CountryPicker.module.css";
 import { fetchCountries, fetchTotal } from "../../api";
 import cx from "classnames";
 
-const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => {
+const CountryPicker = ({
+  handleCountryChange,
+  addClass,
+  data: { confirmed },
+}) => {
   const [fetchedCountries, setFetechedCountries] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [total, setTotal] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
-      await fetchTotal();
+      setTotal(await fetchTotal());
     };
     fetchApi();
-  }, []);
+  }, [total]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -37,6 +42,10 @@ const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => 
   return (
     <div className={styles.tabCountry}>
       <div className={styles.info}>
+        {console.log(
+          total.map((to) => console.log(to)),
+          "totallll"
+        )}
         <div className={styles.areas}>
           <div className={styles.searchCountrie}>
             <input
@@ -46,20 +55,19 @@ const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => 
               onChange={(e) => setSearch(e.target.value)}
             />
             <div className={styles.countrieContent}>
-            {search !== "" && filteredCountries &&
-            filteredCountries.map((country) => (
-                <div
-                  className={cx(
-                    styles.country,
-                  )}
-                  onClick={(e) =>
-                    handleCountryChange(e.currentTarget.dataset.country)
-                  }
-                  data-country={country}
-                >
-                  {country}
-                </div>
-            ))}
+              {search !== "" &&
+                filteredCountries &&
+                filteredCountries.map((country) => (
+                  <div
+                    className={cx(styles.country)}
+                    onClick={(e) =>
+                      handleCountryChange(e.currentTarget.dataset.country)
+                    }
+                    data-country={country}
+                  >
+                    {country}
+                  </div>
+                ))}
             </div>
           </div>
           {fetchedCountries &&
@@ -68,7 +76,7 @@ const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => 
                 <div
                   className={cx(
                     styles.country,
-                    addClass === index && styles.active,
+                    addClass === index && styles.active
                   )}
                   key={index}
                   onClick={(e) =>
@@ -76,12 +84,12 @@ const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => 
                   }
                   data-country={country}
                 >
-                  <div className={styles.areaName}>
-                  {country}
-                  </div>
+                  <div className={styles.areaName}>{country}</div>
                   <div className={styles.areaTotal}>
                     <div className={styles.secondaryInfo}>
-                    {confirmed.value}
+                      {total.map(
+                        (to) => to.countryRegion === country && to.confirmed
+                      )}
                     </div>
                   </div>
                 </div>
