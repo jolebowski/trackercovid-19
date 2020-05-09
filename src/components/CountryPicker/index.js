@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CountryPicker.module.css";
-import { fetchCountries } from "../../api";
+import { fetchCountries, fetchTotal } from "../../api";
 import cx from "classnames";
 
-const CountryPicker = ({ handleCountryChange, addClass }) => {
+const CountryPicker = ({ handleCountryChange, addClass, data: {confirmed} }) => {
   const [fetchedCountries, setFetechedCountries] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredCountries, setFilteredCountries] = useState([]);
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await fetchTotal();
+    };
+    fetchApi();
+  }, []);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -39,19 +46,29 @@ const CountryPicker = ({ handleCountryChange, addClass }) => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <div className={styles.countrieContent}>
-              <div className={styles.divArea}>
-                {filteredCountries && filteredCountries}
-              </div>
+            {search !== "" && filteredCountries &&
+            filteredCountries.map((country) => (
+                <div
+                  className={cx(
+                    styles.country,
+                  )}
+                  onClick={(e) =>
+                    handleCountryChange(e.currentTarget.dataset.country)
+                  }
+                  data-country={country}
+                >
+                  {country}
+                </div>
+            ))}
             </div>
           </div>
-          {filteredCountries &&
-            filteredCountries.map((country, index) => (
+          {fetchedCountries &&
+            fetchedCountries.map((country, index) => (
               <div id={country} className={styles.divArea}>
                 <div
                   className={cx(
                     styles.country,
-                    country === index && styles.active,
-                    search === "" && styles.country
+                    addClass === index && styles.active,
                   )}
                   key={index}
                   onClick={(e) =>
@@ -59,7 +76,14 @@ const CountryPicker = ({ handleCountryChange, addClass }) => {
                   }
                   data-country={country}
                 >
+                  <div className={styles.areaName}>
                   {country}
+                  </div>
+                  <div className={styles.areaTotal}>
+                    <div className={styles.secondaryInfo}>
+                    {confirmed.value}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
