@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Cards, Chart, CountryPicker, Infos , Select} from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+import image from './images/image.png';
+
 
 
 class App extends Component {
@@ -27,6 +29,9 @@ class App extends Component {
     return (
       <div className={styles.pageWhole}>
         <div className={styles.header}>
+          <a href="/" >
+          <img className={styles.logo} src={image} alt="COVID-19" />
+          </a>  
           <a href="/" className={styles.titleHeader}>
             <h1 className={styles.namePage}>
               Statistiques sur le coronavirus (COVID-19)
@@ -46,7 +51,7 @@ class App extends Component {
             <div className={styles.verticalHeader}>
               <div className={styles.location}>
                 <h2 className={styles.locationTitle}>
-                  {country ? country : "Monde"}
+                  {country ? country : "Monde entier"}
                 </h2>
               </div>
             </div>
