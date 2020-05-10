@@ -114,6 +114,7 @@ body {
 @media (max-width: 760px){
   #mobile{
     display: block;
+    padding: 24px 24px 24px 24px;
   }
   .listCountry {
      display: none;

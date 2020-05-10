@@ -53,12 +53,13 @@ class App extends Component {
             <div className={styles.verticalContent}>
               <div className={styles.graph}>
                 <div className={styles.row} id={styles.mobile}>
-                <Infos data={statStatic} />
-
                   <Select handleCountryChange={this.handleCountryChange}/>
                 </div>
                 <div className={styles.row}>
                   <Cards data={data} />
+                </div>
+                <div id={styles.mobile}>
+                  <Infos data={statStatic} />
                 </div>
                 <div className={styles.row}>
                   <Chart data={data} />
