@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Cards, Chart, CountryPicker, Infos } from "./components";
+import { Cards, Chart, CountryPicker, Infos , Select} from "./components";
 import styles from "./App.module.css";
 import { fetchData } from "./api";
+
 
 class App extends Component {
   state = {
@@ -51,6 +52,9 @@ class App extends Component {
             </div>
             <div className={styles.verticalContent}>
               <div className={styles.graph}>
+                <div className={styles.row} id={styles.mobile}>
+                  <Select handleCountryChange={this.handleCountryChange}/>
+                </div>
                 <div className={styles.row}>
                   <Cards data={data} />
                 </div>
