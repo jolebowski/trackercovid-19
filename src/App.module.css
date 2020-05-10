@@ -111,7 +111,7 @@ body {
 #mobile{
   display: none;
 }
-@media (max-width: 1060px){
+@media (max-width: 800px){
   #mobile{
     display: block;
   }
