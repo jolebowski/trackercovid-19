@@ -55,17 +55,17 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
       ) : null
     )
   return (
-    <div className={styles.row}>
+    <>
       <div className={styles.col6}>
         <div>{pieChar}</div>
       </div>
       <div className={styles.col6}>
         <div className={styles.graphTitle}>
-          <div>Nombre de morts et de contaminés en fonction des jours</div>
+          <div>Nombre de morts et de contaminés en fonction des jours dans le monde entier</div>
         </div>
         <div>{LineChart}</div>
       </div>
-    </div>
+    </>
   );
 };
 

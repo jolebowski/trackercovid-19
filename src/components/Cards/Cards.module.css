@@ -74,3 +74,10 @@
   margin: 0;
   text-align: center;
 }
+@media (max-width: 1060px){
+  .col3 {
+     flex: 50%;
+     max-width: 50%;
+ }}
+
+ 

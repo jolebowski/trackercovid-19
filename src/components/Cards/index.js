@@ -14,7 +14,7 @@ const Cards = ({ data: { confirmed, recovered, deaths } }) => {
           <div className={cx(styles.card, styles.confirmed)}>
             <div className={styles.tile}>
               <div className={styles.title}>
-                Nombre total de cas confirmés :
+                Nombre de confirmés :
                 <div className={styles.numberConfirmed}>
                   <CountUp
                     start={0}
