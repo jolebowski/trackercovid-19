@@ -58,9 +58,6 @@ class App extends Component {
                 <div className={styles.row}>
                   <Cards data={data} />
                 </div>
-                <div id={styles.mobile}>
-                  <Infos data={statStatic} />
-                </div>
                 <div className={styles.row}>
                   <Chart data={data} />
                 </div>
