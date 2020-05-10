@@ -20,3 +20,13 @@
     flex: 100%;
     max-width: 100%;
 }}
+
+#mobile{
+  display: none;
+}
+@media (max-width: 760px){
+  #mobile{
+    display: block;
+    padding: 24px 24px 24px 24px;
+  }
+}

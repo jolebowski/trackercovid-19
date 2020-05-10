@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { fetchDailyData } from "../../api";
 import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css";
-const Chart = ({data : {confirmed, deaths, recovered}}) => {
+import Infos from "../Infos";
+
+const Chart = ({data : {confirmed, deaths, recovered}, statStatic}) => {
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -58,6 +60,9 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
     <>
       <div className={styles.col6}>
         <div>{pieChar}</div>
+      </div>
+      <div id={styles.mobile}>
+        <Infos data={statStatic} />
       </div>
       <div className={styles.col6}>
         <div className={styles.graphTitle}>
