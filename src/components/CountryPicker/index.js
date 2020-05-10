@@ -42,10 +42,6 @@ const CountryPicker = ({
   return (
     <div className={styles.tabCountry}>
       <div className={styles.info}>
-        {console.log(
-          total.map((to) => console.log(to)),
-          "totallll"
-        )}
         <div className={styles.areas}>
           <div className={styles.searchCountrie}>
             <input
@@ -88,7 +84,8 @@ const CountryPicker = ({
                   <div className={styles.areaTotal}>
                     <div className={styles.secondaryInfo}>
                       {total.map(
-                        (to) => to.countryRegion === country && to.confirmed
+                        (to) => to.combinedKey === country && to.confirmed.toString()
+                        .replace(/\B(?=(?:\d{3})+(?!\d))/g, ",")
                       )}
                     </div>
                   </div>
