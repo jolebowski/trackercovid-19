@@ -1,10 +1,21 @@
 .row {
   display: flex;
-  padding: 0 12px;
   justify-content: left;
   width: 50%;
 }
 .col6 {
   flex: 50%;
   max-width: 100%;
+}
+.graphTitle{
+  margin: 20px 10px 12px 10px;
+  line-height: 22px;
+  font-size: 16px;
+  margin-right: 0px;
+  color: #333333;
+  display: grid;
+  grid-template-columns: auto max-content;
+  font-weight: 600;
+  padding-right: 8px;
+  grid-column-gap: 6px;
 }

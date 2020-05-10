@@ -16,7 +16,7 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
     dailyData.length !== undefined ? (
       <Line
       responsive= {true}
-      width= "720px"
+      width= "700px"
       height="360px"
         data={{
           labels: dailyData.map(({ date }) => date),
@@ -49,7 +49,7 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
               backgroundColor: ["#de3700", "#00aa00", "#767676"]
             }],
           }}
-          width= "720px"
+          width= "700px"
           height="360px"
         />
       ) : null
@@ -60,6 +60,9 @@ const Chart = ({data : {confirmed, deaths, recovered}}) => {
         <div>{pieChar}</div>
       </div>
       <div className={styles.col6}>
+        <div className={styles.graphTitle}>
+          <div>Nombre de morts et de contaminés en fonction des jours</div>
+        </div>
         <div>{LineChart}</div>
       </div>
     </div>
