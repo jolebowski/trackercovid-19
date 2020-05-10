@@ -36,7 +36,7 @@ class App extends Component {
           <div className={styles.listCountry}>
             <Infos data={statStatic} />
             <CountryPicker
-              data={data}
+              data={statStatic}
               handleCountryChange={this.handleCountryChange}
               addClass={addClass}
             />

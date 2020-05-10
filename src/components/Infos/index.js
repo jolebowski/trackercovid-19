@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./Infos.module.css";
 
 const Infos = ({ data: { confirmed, deaths, recovered, lastUpdate } }) => {
+  if (!confirmed) {
+    return "Chargement...";
+  }
   return (
     <div className={styles.info}>
       <div className={styles.infoHeader}>

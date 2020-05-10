@@ -84,3 +84,38 @@ input {
   color: #2196f3 !important;
   border-color: #2196f3;
 }
+.countrieContent {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  top: 58px;
+  background: #fff;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 6px 6px;
+  font-size: 13px;
+  line-height: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 290px;
+  overflow-x: auto;
+}
+.areaTotal{
+  color: #767676;
+}
+.areaName{
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
