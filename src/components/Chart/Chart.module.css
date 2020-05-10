@@ -28,5 +28,7 @@
   #mobile{
     display: block;
     padding: 24px 24px 24px 24px;
+    border-top: #ddd 1px solid;
+    margin-top: 15px;
   }
 }
